@@ -10,6 +10,7 @@ interface Post {
   id: number;
   title: string;
   content: string;
+  createdAt: Date;
 }
 
 let posts: Post[] = [];
@@ -23,9 +24,12 @@ app.post('/posts', (req, res) => {
     return;
   }
 
+  // Crear el objeto Date con la fecha y hora actual
+  const createdAt = new Date();
+
   // Intentar crear el nuevo post
   try {
-    const newPost: Post = { id, title, content };
+    const newPost: Post = { id, title, content, createdAt};
     posts.push(newPost);
     res.status(201).json(newPost); // Envía el post recién creado como respuesta en formato JSON
   } catch (error) {
