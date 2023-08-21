@@ -1,8 +1,10 @@
 import express from 'express';
+import cors from 'cors'; // Importa el paquete cors
 
 const app = express();
 const PORT = 3000;
 
+app.use(cors()); // Habilita CORS para todas las solicitudes
 app.use(express.json());
 
 // Aquí implementarás los endpoints (Create, Delete, Read) para la entidad "Post"
